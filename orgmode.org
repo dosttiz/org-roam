@@ -1,0 +1,190 @@
+#+title: Orgmode
+#+AUTHOR: Versad621
+#+DATE: <2025>
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+Some things I found worth mentioning from [[https:orgmode.org/guide][Org Mode Wiki]].
+
+* Document Structure [[https:orgmode.org/guide/Document-Structure.html][original]]
+Org is an outliner.
+/Outline/ is a hierarchical document structure. Best to represent
+thoughts and connections.
+Outlines can be hidden (=org-cycle= or =TAB= key) to show only
+general information.
+** Headlines
+Define the structure of an outline tree.
+Start on the left margin with asterick =*= symbols.
+Org footnote section is a special type of headingds.
+** Visibility cycling
+Hide parts of the text in the buffer.
+=TAB= and =S-TAB= /S/ for /Shift/ to change visibility in
+the buffer.
+*** Subtree Cycling
+Rotate _current_ subtree among the states:
+
+~->FOLDED -> CHILDREN -> SUBTREE->~
+
+*** Global Cycling
+=S-TAB=. Rotate the entire buffer among the states.
+
+~->OVERVIEW -> CONTENTS -> SHOW ALL->~
+
+~#+STARTUP: content~ variable is refers to ~org-startup-folded~
+which can be configured to show only parts of the content.
+Possible values:
++ overview
++ content
++ showall
++ showeverything
++ show<n>levels, where n = 2..5
+
+*** Structure Editing
++ =M-RET= (org-meta-return) insert new heading same level
+  as current
++ =M-S-RET= (org-insert-todo-heading)
+  Insert new TODO entry with same level as current heading
+
+** Plain lists
+Org knows _ordered_, _unordered_ and _description_ lists.
+a. Unordered list
+b. list item
+c. list item
+d. Ordered list
+e. Term :: Description
+   + List item
+   + Another :: item
+
+* Tables
+Tables are automatically formatted in ASCII.
+Any line with =|= as the first non-whitespace character is
+considered part of the table. =|= is also the column separator.
+| Name  | Age | Phone |
+|-------+-----+-------|
+| Peter |  17 |   123 |
+| Anna  |  33 |  4321 |
+=M-KEYS= and =S-KEYS= are also allowed to edit tables.
+
+* Hyperlinks
+Syntax: =[[LINK]DESCRIPTION]]=.
+[[file:orgmode.org::Tables][link]]
+* =TODO= ITEMS
+*TODO* Items are part of a notes file.
+** Basic =TODO= functionality
+Any _headline_ becomes a TODO item when it starts with the
+word ~TODO~. For example:
+=* TODO Write letter to Sam=
+=TODO= entries are allowed rotation motion
+to switch between states.
+=org-todo-list= collects all TODO's into a single buffer.
+=org-show-todo-tree= view TODO's as a sparse tree.
+** Multi-state Workflow
+Custom TODO keywords:
+:ORGHEADING:
+~#+TODO: TODO(t) | DONE(d)~
+~#+TODO: REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)~
+~#+TODO: | CANCELED(c)~
+:END:
+** Progress logging
+To record a timestamp and a note when changing a TODO state, call
+the command ~org-todo~ with a prefix argument.
+To configure this write the following config code:
+~(setq org-log-done 'time)~
+Also if you want to record a note along with the timestamp:
+~(setq org-log-done 'time)~
+
+*** Tracking TODO state changes
+Keeping track of the todo changes \\
+For state logging ORGMODE expects configuration on a
+per-keyword basis. \\
+With a special markers:
++ ~!~ :: timestamp
++ ~@~ :: note
+in a parentheses after each keyword. For example: \\
+~#+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)~
+Defines TODO keywords and fast access keys, and also request
+that a time is recorded when the entry is set to ~DONE~ and
+that a note is recorded when switching to ~WAIT~ or ~CANCELED~. \\
+Same works when setting ~org-todo-keywords~ variable.
+** Breaking Tasks Down into Subtasks
+Use ~[/]~ or ~[%]~ to overview of the fraction of a task.
+**** Organize party [66%]
+***** TODO Call people [1/2]
+****** DONE PETER
+CLOSED: [2025-07-13 Sun 17:42]
+- CLOSING NOTE [2025-07-13 Sun 17:42] \\
+  called Peter, he said he will be @ the party yay
+****** TODO SARAH
+***** DONE BUY FOOD
+CLOSED: [2025-07-13 Sun 17:42]
+- CLOSING NOTE [2025-07-13 Sun 17:42] \\
+  bought food
+***** DONE TALK TO NEIGHBOR
+CLOSED: [2025-07-13 Sun 17:42]
+- CLOSING NOTE [2025-07-13 Sun 17:42] \\
+  talkedddd
+** Checkboxes
+Every item in a plain list (see [[org:orgmode.org::Plain Lists]])
+can be made into a checkbox by starting with the string =[ ]=. \\
+Checkboxes are not included into the global TODO list.
+*** TODO Organize party [0/2]
+- [-] call people [50%]
+  - [X] tom
+  - [ ] jones
+- [ ] make food
+~C-c C-c~ -- toggle checkbox.
+* Tags
+An excellent way to implement labels and contexts for cross-correlating
+information is to assign /tags/ to *headlines*. \\
+Every headline can contain a list of tags; they occur at the end of
+the headline. Tags must be preceded and followed by a single colon.
+* Properties
+Key-value pairs associated with an entry. They live in a
+=:PROPERTY:= drawer.
+* Dates and times
+/timestamp/ is a specially formatted string carrying the date and time
+information.
+** Timestamps
+Can appear anywhere in the headline or a body of an Org tree entry. \\
+There are multiple timestamp types:
++ plain timestamp ::
+  A simple timestamp just assigns a date/time to an item. There can
+  be multiple timestamps for an item. \\
++ Timestamp with repeater interval ::
+  Not only once but after specified amount of time all the time.
+  ~<2007-05-16 Wed 12:30 +1w>~ 16 then 23 then 30 etc...
++ Time range ::
+  Just two time units separated by ~-~: \\
+  ~<2006-11-02 Thu 10:00-12:00>~
++ Time/date range :: ~<one time>--<other time>~ idk you can combine
+  with the above time range
++ inactive ts :: square brackets [] doesnt show in agenda.
+** Creating timestamps
+~C-c .~ ~org-timestamp <2025-08-31 Sun 12:00 +1d>~
+** Deadlines & scheduling
++ DEADLINE ::
+  ~C-c C-d~ ~org-deadline~ inserts DEADLINE kw + ts
++  Scheduled ::
+  ~org-schedule~ kw + ts - you start to work on task @ ts. \\
+Use repeater interval for reoccuring tasks and deadlines (so it goes).
+** Clocking work time
+How much time u spent on a task.
++ ~org-clock-in~ :: inserts =CLOCK= kw + ts
++ ~org-clock-out~ :: stop the clock - ts = ts(start) - ts(stop) =>h:m
+* Capture Refile Archive
+Good organization system is a quick organization system which
+captures new ideas and task fast. org does this using /capture/.
+It also stores files related to the task in a special directory
+(/attachments/).
+** Capture
+Lets you quickly store notes with little interruption of workflow. \\
+You can define templates for new entries and associate them with
+different targets for storing notes. \\
+~(setq org-default-notes-file (concat org-directory "/notes.org"))~
+Code to set default capture directory.
+** REfile
+Move heading and its contents to other file (no copy pastig)
+also option for save heading in current file
+
+* Embedded latex
+$E = mc^2$
+$\sum$

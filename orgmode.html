@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-07-13 Sun 19:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Orgmode</title>
+<meta name="author" content="Versad621" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="src/readtheorg_theme/css/search.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/search.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Orgmode</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd66fc84">1. Document Structure original</a>
+<ul>
+<li><a href="#org01001d3">1.1. Headlines</a></li>
+<li><a href="#orgaa082dd">1.2. Visibility cycling</a>
+<ul>
+<li><a href="#orgcb4e6b5">1.2.1. Subtree Cycling</a></li>
+<li><a href="#org0ec41fa">1.2.2. Global Cycling</a></li>
+<li><a href="#org64d9faf">1.2.3. Structure Editing</a></li>
+</ul>
+</li>
+<li><a href="#org1957d47">1.3. Plain lists</a></li>
+</ul>
+</li>
+<li><a href="#orgaca6890">2. Tables</a></li>
+<li><a href="#org25be38a">3. Hyperlinks</a></li>
+<li><a href="#orgb3ae809">4. <code>TODO</code> ITEMS</a>
+<ul>
+<li><a href="#org5e6e6c0">4.1. Basic <code>TODO</code> functionality</a></li>
+<li><a href="#org51cb5cd">4.2. Multi-state Workflow</a></li>
+<li><a href="#org80b81c2">4.3. Progress logging</a>
+<ul>
+<li><a href="#org002df93">4.3.1. Tracking TODO state changes</a></li>
+</ul>
+</li>
+<li><a href="#orgaf21d39">4.4. Breaking Tasks Down into Subtasks</a></li>
+<li><a href="#org7500d6e">4.5. Checkboxes</a>
+<ul>
+<li><a href="#orga367c39">4.5.1. <span class="todo TODO">TODO</span> Organize party <code>[0/2]</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org218d4dd">5. Tags</a></li>
+<li><a href="#orgf86075d">6. Properties</a></li>
+<li><a href="#org9d84b53">7. Dates and times</a>
+<ul>
+<li><a href="#orgc89dfd1">7.1. Timestamps</a></li>
+<li><a href="#orgeb1bebc">7.2. Creating timestamps</a></li>
+<li><a href="#orgd61775d">7.3. Deadlines &amp; scheduling</a></li>
+<li><a href="#org71bda09">7.4. Clocking work time</a></li>
+</ul>
+</li>
+<li><a href="#org5fb513a">8. Capture Refile Archive</a>
+<ul>
+<li><a href="#org318a4c0">8.1. Capture</a></li>
+<li><a href="#org4bebd8c">8.2. REfile</a></li>
+</ul>
+</li>
+<li><a href="#orgace95ec">9. Embedded latex</a></li>
+</ul>
+</div>
+</div>
+<p>
+Some things I found worth mentioning from <a href="https:orgmode.org/guide">Org Mode Wiki</a>.
+</p>
+<div id="outline-container-orgd66fc84" class="outline-2">
+<h2 id="orgd66fc84"><span class="section-number-2">1.</span> Document Structure <a href="https:orgmode.org/guide/Document-Structure.html">original</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Org is an outliner.
+<i>Outline</i> is a hierarchical document structure. Best to represent
+thoughts and connections.
+Outlines can be hidden (<code>org-cycle</code> or <code>TAB</code> key) to show only
+general information.
+</p>
+</div>
+<div id="outline-container-org01001d3" class="outline-3">
+<h3 id="org01001d3"><span class="section-number-3">1.1.</span> Headlines</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Define the structure of an outline tree.
+Start on the left margin with asterick <code>*</code> symbols.
+Org footnote section is a special type of headingds.
+</p>
+</div>
+</div>
+<div id="outline-container-orgaa082dd" class="outline-3">
+<h3 id="orgaa082dd"><span class="section-number-3">1.2.</span> Visibility cycling</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Hide parts of the text in the buffer.
+<code>TAB</code> and <code>S-TAB</code> <i>S</i> for <i>Shift</i> to change visibility in
+the buffer.
+</p>
+</div>
+<div id="outline-container-orgcb4e6b5" class="outline-4">
+<h4 id="orgcb4e6b5"><span class="section-number-4">1.2.1.</span> Subtree Cycling</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Rotate <span class="underline">current</span> subtree among the states:
+</p>
+
+<p>
+<code>-&gt;FOLDED -&gt; CHILDREN -&gt; SUBTREE-&gt;</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org0ec41fa" class="outline-4">
+<h4 id="org0ec41fa"><span class="section-number-4">1.2.2.</span> Global Cycling</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+<code>S-TAB</code>. Rotate the entire buffer among the states.
+</p>
+
+<p>
+<code>-&gt;OVERVIEW -&gt; CONTENTS -&gt; SHOW ALL-&gt;</code>
+</p>
+
+<p>
+<code>#+STARTUP: content</code> variable is refers to <code>org-startup-folded</code>
+which can be configured to show only parts of the content.
+Possible values:
+</p>
+<ul class="org-ul">
+<li>overview</li>
+<li>content</li>
+<li>showall</li>
+<li>showeverything</li>
+<li>show&lt;n&gt;levels, where n = 2..5</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org64d9faf" class="outline-4">
+<h4 id="org64d9faf"><span class="section-number-4">1.2.3.</span> Structure Editing</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li><code>M-RET</code> (org-meta-return) insert new heading same level
+as current</li>
+<li><code>M-S-RET</code> (org-insert-todo-heading)
+Insert new TODO entry with same level as current heading</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1957d47" class="outline-3">
+<h3 id="org1957d47"><span class="section-number-3">1.3.</span> Plain lists</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Org knows <span class="underline">ordered</span>, <span class="underline">unordered</span> and <span class="underline">description</span> lists.
+</p>
+<ol class="org-ol">
+<li>Unordered list</li>
+<li>list item</li>
+<li>list item</li>
+<li>Ordered list</li>
+<li>Term :: Description
+<ul class="org-ul">
+<li>List item</li>
+<li id="Another">item</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaca6890" class="outline-2">
+<h2 id="orgaca6890"><span class="section-number-2">2.</span> Tables</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Tables are automatically formatted in ASCII.
+Any line with <code>|</code> as the first non-whitespace character is
+considered part of the table. <code>|</code> is also the column separator.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-right">Age</th>
+<th scope="col" class="org-right">Phone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Peter</td>
+<td class="org-right">17</td>
+<td class="org-right">123</td>
+</tr>
+
+<tr>
+<td class="org-left">Anna</td>
+<td class="org-right">33</td>
+<td class="org-right">4321</td>
+</tr>
+</tbody>
+</table>
+<p>
+<code>M-KEYS</code> and <code>S-KEYS</code> are also allowed to edit tables.
+</p>
+</div>
+</div>
+<div id="outline-container-org25be38a" class="outline-2">
+<h2 id="org25be38a"><span class="section-number-2">3.</span> Hyperlinks</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Syntax: <code>[[LINK]DESCRIPTION]]</code>.
+<a href="orgmode.html#MissingReference">link</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3ae809" class="outline-2">
+<h2 id="orgb3ae809"><span class="section-number-2">4.</span> <code>TODO</code> ITEMS</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<b>TODO</b> Items are part of a notes file.
+</p>
+</div>
+<div id="outline-container-org5e6e6c0" class="outline-3">
+<h3 id="org5e6e6c0"><span class="section-number-3">4.1.</span> Basic <code>TODO</code> functionality</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Any <span class="underline">headline</span> becomes a TODO item when it starts with the
+word <code>TODO</code>. For example:
+<code>* TODO Write letter to Sam</code>
+<code>TODO</code> entries are allowed rotation motion
+to switch between states.
+<code>org-todo-list</code> collects all TODO&rsquo;s into a single buffer.
+<code>org-show-todo-tree</code> view TODO&rsquo;s as a sparse tree.
+</p>
+</div>
+</div>
+<div id="outline-container-org51cb5cd" class="outline-3">
+<h3 id="org51cb5cd"><span class="section-number-3">4.2.</span> Multi-state Workflow</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Custom TODO keywords:
+</p>
+<p>
+<code>#+TODO: TODO(t) | DONE(d)</code>
+<code>#+TODO: REPORT(r) BUG(b) KNOWNCAUSE(k) | FIXED(f)</code>
+<code>#+TODO: | CANCELED(c)</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org80b81c2" class="outline-3">
+<h3 id="org80b81c2"><span class="section-number-3">4.3.</span> Progress logging</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+To record a timestamp and a note when changing a TODO state, call
+the command <code>org-todo</code> with a prefix argument.
+To configure this write the following config code:
+<code>(setq org-log-done 'time)</code>
+Also if you want to record a note along with the timestamp:
+<code>(setq org-log-done 'time)</code>
+</p>
+</div>
+<div id="outline-container-org002df93" class="outline-4">
+<h4 id="org002df93"><span class="section-number-4">4.3.1.</span> Tracking TODO state changes</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+Keeping track of the todo changes <br />
+For state logging ORGMODE expects configuration on a
+per-keyword basis. <br />
+With a special markers:
+</p>
+<dl class="org-dl">
+<dt><code>!</code></dt><dd>timestamp</dd>
+<dt><code>@</code></dt><dd>note</dd>
+</dl>
+<p>
+in a parentheses after each keyword. For example: <br />
+<code>#+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)</code>
+Defines TODO keywords and fast access keys, and also request
+that a time is recorded when the entry is set to <code>DONE</code> and
+that a note is recorded when switching to <code>WAIT</code> or <code>CANCELED</code>. <br />
+Same works when setting <code>org-todo-keywords</code> variable.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf21d39" class="outline-3">
+<h3 id="orgaf21d39"><span class="section-number-3">4.4.</span> Breaking Tasks Down into Subtasks</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Use <code>[/]</code> or <code>[%]</code> to overview of the fraction of a task.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org4f893ce"></a>Organize party <code>[66%]</code><br />
+<ol class="org-ol">
+<li><a id="org966aa34"></a><span class="todo TODO">TODO</span> Call people <code>[1/2]</code><br />
+<ol class="org-ol">
+<li><a id="orgb5aa336"></a><span class="done DONE">DONE</span> PETER<br />
+<div class="outline-text-7" id="text-4-4-0-1-1-1">
+<ul class="org-ul">
+<li>CLOSING NOTE <span class="timestamp-wrapper"><span class="timestamp">[2025-07-13 Sun 17:42] </span></span> <br />
+called Peter, he said he will be @ the party yay</li>
+</ul>
+</div>
+</li>
+<li><a id="org5dfe0fe"></a><span class="todo TODO">TODO</span> SARAH<br /></li>
+</ol>
+</li>
+<li><a id="orgdc3d801"></a><span class="done DONE">DONE</span> BUY FOOD<br />
+<div class="outline-text-6" id="text-4-4-0-1-2">
+<ul class="org-ul">
+<li>CLOSING NOTE <span class="timestamp-wrapper"><span class="timestamp">[2025-07-13 Sun 17:42] </span></span> <br />
+bought food</li>
+</ul>
+</div>
+</li>
+<li><a id="org498188b"></a><span class="done DONE">DONE</span> TALK TO NEIGHBOR<br />
+<div class="outline-text-6" id="text-4-4-0-1-3">
+<ul class="org-ul">
+<li>CLOSING NOTE <span class="timestamp-wrapper"><span class="timestamp">[2025-07-13 Sun 17:42] </span></span> <br />
+talkedddd</li>
+</ul>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-org7500d6e" class="outline-3">
+<h3 id="org7500d6e"><span class="section-number-3">4.5.</span> Checkboxes</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Every item in a plain list (see <a href="org:orgmode.org::Plain%20Lists">org:orgmode.org::Plain%20Lists</a>)
+can be made into a checkbox by starting with the string <code>[ ]</code>. <br />
+Checkboxes are not included into the global TODO list.
+</p>
+</div>
+<div id="outline-container-orga367c39" class="outline-4">
+<h4 id="orga367c39"><span class="section-number-4">4.5.1.</span> <span class="todo TODO">TODO</span> Organize party <code>[0/2]</code></h4>
+<div class="outline-text-4" id="text-4-5-1">
+<ul class="org-ul">
+<li class="trans"><code>[-]</code> call people <code>[50%]</code>
+<ul class="org-ul">
+<li class="on"><code>[X]</code> tom</li>
+<li class="off"><code>[&#xa0;]</code> jones</li>
+</ul></li>
+<li class="off"><code>[&#xa0;]</code> make food</li>
+</ul>
+<p>
+<code>C-c C-c</code> &#x2013; toggle checkbox.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org218d4dd" class="outline-2">
+<h2 id="org218d4dd"><span class="section-number-2">5.</span> Tags</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+An excellent way to implement labels and contexts for cross-correlating
+information is to assign <i>tags</i> to <b>headlines</b>. <br />
+Every headline can contain a list of tags; they occur at the end of
+the headline. Tags must be preceded and followed by a single colon.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf86075d" class="outline-2">
+<h2 id="orgf86075d"><span class="section-number-2">6.</span> Properties</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Key-value pairs associated with an entry. They live in a
+<code>:PROPERTY:</code> drawer.
+</p>
+</div>
+</div>
+<div id="outline-container-org9d84b53" class="outline-2">
+<h2 id="org9d84b53"><span class="section-number-2">7.</span> Dates and times</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<i>timestamp</i> is a specially formatted string carrying the date and time
+information.
+</p>
+</div>
+<div id="outline-container-orgc89dfd1" class="outline-3">
+<h3 id="orgc89dfd1"><span class="section-number-3">7.1.</span> Timestamps</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Can appear anywhere in the headline or a body of an Org tree entry. <br />
+There are multiple timestamp types:
+</p>
+<dl class="org-dl">
+<dt>plain timestamp</dt><dd>A simple timestamp just assigns a date/time to an item. There can
+be multiple timestamps for an item. <br /></dd>
+<dt>Timestamp with repeater interval</dt><dd>Not only once but after specified amount of time all the time.
+<code>&lt;2007-05-16 Wed 12:30 +1w&gt;</code> 16 then 23 then 30 etc&#x2026;</dd>
+<dt>Time range</dt><dd>Just two time units separated by <code>-</code>: <br />
+<code>&lt;2006-11-02 Thu 10:00-12:00&gt;</code></dd>
+<dt>Time/date range</dt><dd><code>&lt;one time&gt;--&lt;other time&gt;</code> idk you can combine
+with the above time range</dd>
+<dt>inactive ts</dt><dd>square brackets [] doesnt show in agenda.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgeb1bebc" class="outline-3">
+<h3 id="orgeb1bebc"><span class="section-number-3">7.2.</span> Creating timestamps</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+<code>C-c .</code> <code>org-timestamp &lt;2025-08-31 Sun 12:00 +1d&gt;</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgd61775d" class="outline-3">
+<h3 id="orgd61775d"><span class="section-number-3">7.3.</span> Deadlines &amp; scheduling</h3>
+<div class="outline-text-3" id="text-7-3">
+<dl class="org-dl">
+<dt>DEADLINE</dt><dd><code>C-c C-d</code> <code>org-deadline</code> inserts DEADLINE kw + ts</dd>
+<dt>Scheduled</dt><dd><code>org-schedule</code> kw + ts - you start to work on task @ ts. <br /></dd>
+</dl>
+<p>
+Use repeater interval for reoccuring tasks and deadlines (so it goes).
+</p>
+</div>
+</div>
+<div id="outline-container-org71bda09" class="outline-3">
+<h3 id="org71bda09"><span class="section-number-3">7.4.</span> Clocking work time</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+How much time u spent on a task.
+</p>
+<dl class="org-dl">
+<dt><code>org-clock-in</code></dt><dd>inserts <code>CLOCK</code> kw + ts</dd>
+<dt><code>org-clock-out</code></dt><dd>stop the clock - ts = ts(start) - ts(stop) =&gt;h:m</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fb513a" class="outline-2">
+<h2 id="org5fb513a"><span class="section-number-2">8.</span> Capture Refile Archive</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Good organization system is a quick organization system which
+captures new ideas and task fast. org does this using <i>capture</i>.
+It also stores files related to the task in a special directory
+(<i>attachments</i>).
+</p>
+</div>
+<div id="outline-container-org318a4c0" class="outline-3">
+<h3 id="org318a4c0"><span class="section-number-3">8.1.</span> Capture</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Lets you quickly store notes with little interruption of workflow. <br />
+You can define templates for new entries and associate them with
+different targets for storing notes. <br />
+<code>(setq org-default-notes-file (concat org-directory "/notes.org"))</code>
+Code to set default capture directory.
+</p>
+</div>
+</div>
+<div id="outline-container-org4bebd8c" class="outline-3">
+<h3 id="org4bebd8c"><span class="section-number-3">8.2.</span> REfile</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+Move heading and its contents to other file (no copy pastig)
+also option for save heading in current file
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgace95ec" class="outline-2">
+<h2 id="orgace95ec"><span class="section-number-2">9.</span> Embedded latex</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+\(E = mc^2\)
+\(\sum\)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: &lt;2025&gt;</p>
+<p class="author">Author: Versad621</p>
+<p class="date">Created: 2025-07-13 Sun 19:11</p>
+</div>
+</body>
+</html>
